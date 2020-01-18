@@ -8,4 +8,10 @@ function print_header() {
 
 cd "$HOME"
 
-print_header "Bootstrap has nothing to do right now."
+print_header "Running submodule installs for vim and zsh"
+# zsh
+~/.zsh/install.sh
+
+# vim 
+~/.vim/install.sh
+
