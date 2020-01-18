@@ -6,31 +6,18 @@ function print_header() {
   echo "##############################"
 }
 
-# OS Specific Setup with yadm
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  print_header "Install Homebrew"
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  
-  print_header "Install yadm and clone the dotfiles repo"
-  brew install yadm
-  yadm clone https://github.com/wrmilling/dotfiles.git --no-bootstrap
-  yadm submodule init
-  yadm submodule update --recursive
-  
-  ~/.scripts/components/mac.sh
-else
-  print_header "Install yadm and clone the dotfiles repo"
-  sudo apt-get install yadm -y
-  yadm clone git@github.com:WRMilling/dotfiles.git
-  yadm submodule init
-  yadm submodule update --recursive
+# Linux Setup
+print_header "Get arch up to date and install a few utils"
+sudo pacman -Syyu
+sudo pacman -S vim htop tmux git base-devel
 
-  ~/.scripts/components/linux.sh
-fi
+print_header "Install yadm and clone the dotfiles repo"
+sudo pacman -S yay
+yay -S yadm
 
-# General Setup
-print_header "Setup git"
-~/.scripts/components/git.sh
+yadm clone git@github.com:WRMilling/dotfiles.git
+yadm submodule init
+yadm submodule update --recursive
 
 print_header "Using yadm bootstrap to complete setup"
 yadm bootstrap
