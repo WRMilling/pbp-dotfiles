@@ -15,7 +15,7 @@ print_header "Install yadm and clone the dotfiles repo"
 sudo pacman -S yay
 yay -S yadm
 
-yadm clone git@github.com:WRMilling/dotfiles.git
+yadm clone git@github.com:WRMilling/pbp-dotfiles.git
 yadm submodule init
 yadm submodule update --recursive
 
