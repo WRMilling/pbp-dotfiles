@@ -9,7 +9,7 @@ function print_header() {
 # Linux Setup
 print_header "Get arch up to date and install a few utils"
 sudo pacman -Syyu --noconfirm
-sudo pacman -S vim htop tmux git base-devel --noconfirm
+sudo pacman -S vim htop tmux git base-devel zsh --noconfirm
 
 print_header "Install yadm and clone the dotfiles repo"
 sudo pacman -S yay --noconfirm

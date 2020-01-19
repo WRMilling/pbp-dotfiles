@@ -9,6 +9,7 @@ function print_header() {
 cd "$HOME"
 
 print_header "Running submodule installs for vim and zsh"
+
 # zsh
 ~/.zsh/install.sh
 
