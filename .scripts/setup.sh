@@ -8,12 +8,12 @@ function print_header() {
 
 # Linux Setup
 print_header "Get arch up to date and install a few utils"
-sudo pacman -Syyu
-sudo pacman -S vim htop tmux git base-devel
+sudo pacman -Syyu --noconfirm
+sudo pacman -S vim htop tmux git base-devel --noconfirm
 
 print_header "Install yadm and clone the dotfiles repo"
-sudo pacman -S yay
-yay -S yadm
+sudo pacman -S yay --noconfirm
+yay -S yadm --noconfirm
 
 yadm clone git@github.com:WRMilling/pbp-dotfiles.git
 yadm submodule init
