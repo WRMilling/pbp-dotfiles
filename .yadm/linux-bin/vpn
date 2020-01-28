@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+case "$1" in
+start)
+  sudo systemctl start "wg-quick@$2"
+  ;;
+stop)
+  sudo systemctl stop "wg-quick@$2"
+  ;;
+status)
+  sudo wg
+  ;;
+*)
+  cat << EOF
+usage: vpn COMMAND [NAME]
+
+Commands:
+  start       Start a VPN connection
+  stop        Stop a VPN connection
+  status      Check status of current connection
+
+Examples:
+  vpn start wg0
+  vpn stop wg0
+  vpn status
+EOF
+  ;;
+esac
