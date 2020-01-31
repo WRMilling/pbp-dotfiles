@@ -1,0 +1,43 @@
+#!/usr/bin/env sh
+
+print_help () {
+  cat <<- "EOF"
+usage: music [COMMAND]
+
+Commands:
+  start       Start mopidy and ncmpcpp
+  stop        Kill mopidy and ncmpcpp
+  help        Print the help documentation
+
+Examples
+  music start
+  music stop
+  music help
+  music
+EOF
+}
+
+case "$1" in
+stop)
+  pkill mopidy
+  pkill ncmpcpp
+  ;;
+help)
+  print_help
+  ;;
+start)
+  if pgrep -x "mopidy" > /dev/null
+  then
+    echo "Mopidy is running."
+  else
+    echo "Launching Mopidy"
+    mkdir -p /tmp/mopidy/
+    mopidy &> /tmp/mopidy/mopidy.log &
+  fi
+
+  ncmpcpp
+  ;;
+*)
+  print_help
+  ;;
+esac
