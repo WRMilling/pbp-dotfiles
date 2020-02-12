@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+case "$1" in
+off)
+  sudo amixer sset 'Speaker' mute
+  ;;
+on)
+  sudo amixer sset 'Speaker' unmute
+  ;;
+*)
+  cat << EOF
+usage: speakers COMMAND
+
+Commands:
+  off        Mute the built-in speakers
+  on      Unmute the built-in speakers
+
+Examples:
+  speakers off
+  speakers on
+EOF
+  ;;
+esac
