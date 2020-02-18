@@ -7,17 +7,22 @@ off)
 on)
   sudo amixer sset 'Speaker' unmute
   ;;
+status)
+  sudo amixer sget 'Speaker'
+  ;;
 *)
   cat << EOF
 usage: speakers COMMAND
 
 Commands:
-  off        Mute the built-in speakers
-  on      Unmute the built-in speakers
+  off         Mute the built-in speakers
+  on          Unmute the built-in speakers
+  status      Get the current status of the speakers
 
 Examples:
   speakers off
   speakers on
+  speakers status
 EOF
   ;;
 esac
