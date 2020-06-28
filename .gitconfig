@@ -21,3 +21,5 @@
   run = rebase master@{u}
   pom = push origin master
   poh = push origin HEAD
+[pull]
+	ff = only
