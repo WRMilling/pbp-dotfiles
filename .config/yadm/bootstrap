@@ -21,6 +21,6 @@ print_header "Installing a few frequent use applications from pacman"
 sudo pacman -S remmina freerdp qemu qemu-block-iscsi firefox --noconfirm
 
 print_header "Installing a few frequent use applications from AUR"
-yay -S balena-etcher --noconfirm
+yay -S balena-etcher nerd-fonts-hack --noconfirm
 
 
