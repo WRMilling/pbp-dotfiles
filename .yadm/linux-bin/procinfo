@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+a53freq=$(cat /sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq | awk '{print $1 / 1000000}')
+a72freq=$(cat /sys/devices/system/cpu/cpu4/cpufreq/scaling_cur_freq | awk '{print $1 / 1000000}')
+cpu=$(cat /sys/class/thermal/thermal_zone0/temp)
+
+gpufreq=$(cat /sys/devices/platform/ff9a0000.gpu/devfreq/ff9a0000.gpu/cur_freq | awk '{print $1 / 1000000}')
+gpu=$(cat /sys/class/thermal/thermal_zone1/temp)
+echo CPU Temp: ${cpu::2}C '|' A53 Freq: ${a53freq}Ghz '|' A72 Freq: ${a72freq}Ghz 
+echo GPU Temp: ${gpu::2}C '|' GPU Freq: ${gpufreq}Mhz
