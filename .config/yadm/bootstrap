@@ -18,9 +18,9 @@ print_header "Running submodule installs for vim and zsh"
 
 
 print_header "Installing a few frequent use applications from pacman"
-sudo pacman -S remmina freerdp qemu qemu-block-iscsi firefox --noconfirm
+sudo pacman -S remmina freerdp qemu qemu-block-iscsi firefox the_silver_searcher mesa-demos weechat feh keepassxc p7zip--noconfirm
 
 print_header "Installing a few frequent use applications from AUR"
-yay -S balena-etcher nerd-fonts-hack --noconfirm
+yay -S balena-etcher rclone-bin nerd-fonts-hack --noconfirm
 
 
