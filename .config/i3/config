@@ -283,7 +283,7 @@ exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 # set touchpad acceleration (PinebookPro)
-exec --no-startup-id xinput -set-prop 'HAILUCK CO.,LTD USB KEYBOARD Touchpad' 'libinput Accel Speed' 0.7
+exec --no-startup-id xinput -set-prop 'Pine64 Pinebook Pro Touchpad' 'libinput Natural Scrolling Enabled' 1
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
