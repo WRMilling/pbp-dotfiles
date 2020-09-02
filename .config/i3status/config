@@ -15,6 +15,8 @@ general {
 }
 
 order += "cpu_usage"
+order += "cpu_temperature 0"
+order += "cpu_temperature 1"
 # order += "load"
 order += "disk /"
 order += "disk /mnt/NVMe"
@@ -29,7 +31,17 @@ order += "tztime local"
 # order += "ipv6"
 
 cpu_usage {
-        format = " cpu  %usage "
+        format = " cpu %usage "
+}
+
+cpu_temperature 0 {
+        format = " cpu %degrees °C "
+        path = "/sys/class/thermal/thermal_zone0/temp"
+}
+
+cpu_temperature 1 {
+        format = " gpu %degrees °C "
+        path = "/sys/class/thermal/thermal_zone1/temp"
 }
 
 load {
@@ -92,5 +104,5 @@ battery 1 {
 
 tztime local {
         # format = "%Y-%m-%d %H:%M:%S"
-        format = " %d.%m. %H:%M "
+        format = " %m/%d %I:%M %p"
 }
