@@ -20,17 +20,19 @@ chg_current_now=$(cat /sys/class/power_supply/tcpm-source-psy-4-0022/current_now
 chg_voltage_now=$(cat /sys/class/power_supply/tcpm-source-psy-4-0022/voltage_now)
 chg_power_now=$(echo "scale=2;$chg_current_now * $chg_voltage_now / $power_divisor" | bc -l)
 
+# Is the barrel plug being used. We don't have current/voltage for barrel.
 barrel_charging=$(cat /sys/class/power_supply/dc-charger/online)
 
 # Print everything out
 echo CPU Temp: ${cpu::2}C '|' A53 Freq: ${a53freq}Ghz '|' A72 Freq: ${a72freq}Ghz 
 echo GPU Temp: ${gpu::2}C '|' GPU Freq: ${gpufreq}Mhz
+
 if [[ "$bat_power_now" != "0" ]]; then
   echo Battery Discharging at ${bat_power_now}W
-elif [[ "$chg_power_now" != "0" ]]; then
+fi
+
+if [[ "$chg_power_now" != "0" ]]; then
   echo USB-C Charger Supplying ${chg_power_now}W
 elif [[ "$barrel_charging" == "1" ]]; then
   echo Charging via Barrel Plug
-else
-  echo Charging State Unknown
 fi
