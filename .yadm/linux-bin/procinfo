@@ -1,10 +1,30 @@
 #!/usr/bin/env bash
 
+# CPU Core Frequencies
 a53freq=$(cat /sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq | awk '{print $1 / 1000000}')
 a72freq=$(cat /sys/devices/system/cpu/cpu4/cpufreq/scaling_cur_freq | awk '{print $1 / 1000000}')
 cpu=$(cat /sys/class/thermal/thermal_zone0/temp)
 
+# GPU Core Frequencies
 gpufreq=$(cat /sys/devices/platform/ff9a0000.gpu/devfreq/ff9a0000.gpu/cur_freq | awk '{print $1 / 1000000}')
 gpu=$(cat /sys/class/thermal/thermal_zone1/temp)
+
+power_divisor=1000000000000
+# Battery usage in Watts
+bat_current_now=$(cat /sys/class/power_supply/cw2015-battery/current_now)
+bat_voltage_now=$(cat /sys/class/power_supply/cw2015-battery/voltage_now)
+bat_power_now=$(echo "scale=2;$bat_current_now * $bat_voltage_now / $power_divisor" | bc -l)
+
+# Charger draw in Watts
+chg_current_now=$(cat /sys/class/power_supply/tcpm-source-psy-4-0022/current_now)
+chg_voltage_now=$(cat /sys/class/power_supply/tcpm-source-psy-4-0022/voltage_now)
+chg_power_now=$(echo "scale=2;$chg_current_now * $chg_voltage_now / $power_divisor" | bc -l)
+
+# Print everything out
 echo CPU Temp: ${cpu::2}C '|' A53 Freq: ${a53freq}Ghz '|' A72 Freq: ${a72freq}Ghz 
 echo GPU Temp: ${gpu::2}C '|' GPU Freq: ${gpufreq}Mhz
+if [[ "$bat_power_now" != "0" ]]; then
+  echo Battery Discharging at ${bat_power_now}W
+else
+  echo Charger Supplying ${chg_power_now}W
+fi
