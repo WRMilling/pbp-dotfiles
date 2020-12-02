@@ -1,0 +1,5 @@
+#!/bin/dash
+#~/.sterminalrc
+# see man st for possible options to set.
+export font="Source Code Pro:size=10"
+
