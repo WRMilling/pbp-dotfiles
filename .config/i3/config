@@ -27,7 +27,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec PAN_MESA_DEBUG=gl3 alacritty
+bindsym $mod+Return exec PAN_MESA_DEBUG=gl3 alacritty -e tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
