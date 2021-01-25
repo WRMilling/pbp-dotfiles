@@ -1,11 +1,13 @@
 [user]
 	name = Winston R. Milling
   email = Winston@Milli.ng
+	signingkey = 0xA44A3B1758373973
 [alias]
   st = status
   di = diff
   co = checkout
   cm = commit
+  cs = commit -S
   br = branch
   sta = stash
   llog = log --date=local
