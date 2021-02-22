@@ -8,6 +8,7 @@
   co = checkout
   cm = commit
   cs = commit -S
+  csf = commit -S --amend --no-edit
   br = branch
   sta = stash
   llog = log --date=local
