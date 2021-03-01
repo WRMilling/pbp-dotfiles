@@ -26,3 +26,5 @@
   poh = push origin HEAD
 [pull]
 	ff = only
+[commit]
+	gpgsign = true
