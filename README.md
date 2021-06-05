@@ -1,3 +1,7 @@
+# Archived
+
+This repo is archived in favor of the [chezmoi](https://chezmoi.io)-based repo, [dotfiles](https://github.com/wrmilling/dotfiles).
+
 # dotfiles
 My personal dotfiles for a full DE/WM which is currently targeting [Manjaro](https://manjaro.org/) on the [Pinebook Pro](https://www.pine64.org/pinebook-pro/).
 
